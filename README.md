@@ -5,7 +5,7 @@ Hi! You're probably reading this either because you are working on the Crowdbrea
 The goal of this README is to provide an overview of what there is and where the project is headed. 
 
 ## Goal
-For many health-related issues human behaviour is of central importance for Public Health to design appropriate policies. Health behaviors are partially influenced by people's opinion which has been traditionally assessed in surveys. Social media can be used to complement traditional surveys and serve as a low-cost, global, and real-time alternative.
+For many health-related issues human behaviour is of central importance for Public Health to design appropriate policies. Health behaviors are partially influenced by people's opinion which has been traditionally assessed in surveys. Social media can be used to complement traditional surveys and serve as a low-cost, global, and real-time addition to the toolset of Public Health surveillance.
 
 Crowdbreaks focuses on *public* social media data (currently from Twitter) to track such health behaviors. A common issue when building Machine Learning classifiers on social media data is model drift, as e.g. observed in Google Flu Trends. Crowdbreaks is specifically built to overcome this issue by re-annotating newly collected data and re-training algorithms automatically. For a (maybe slighly outdated, but more comprehensive) explanation of this idea, you may want to read [the Crowdbreaks paper](https://www.frontiersin.org/articles/10.3389/fpubh.2019.00081/full).
 
