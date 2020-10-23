@@ -48,6 +48,13 @@ Additionally, the library provides efficient helper functions (e.g. to load the 
 #### local-geocode
 [Local geocode](https://github.com/mar-muel/local-geocode) is a library to perform reverse geo-coding. It is specificially tuned to work on the user location field of tweets. The library parses a string such as "New York City" and returns the geo coordinates (longitude and latitude) if there is match. It is a library which is used in preprocess (and soon in the streamer as well) to enrich geo-information of tweets.
 
+**Tech**: The library is written in Python and uses data from [geonames.org](https://www.geonames.org/).
+
+#### COVID-Twitter-BERT
+[COVID-Twitter-BERT](https://github.com/digitalepidemiologylab/covid-twitter-bert) is a library which allows to perform what is called domain-specific pretraining (DSP) of transformer models. DSP is a process in which a base model (such as BERT) is trained on domain specific data (such as tweets) in order to increase its performance over the base model in downstream tasks (such as classification). The process was specifically used on a large dataset of tweets about COVID-19 and is described in [this](https://arxiv.org/abs/2005.07503) paper. 
+
+**Tech**: The library is written in Python and using the Tensorflow 2 library. It is optimized for training on TPUs and requires a Google Cloud bucket.
+
 ## Past & ongoing Crowdbreaks projects
 ### Vaccine sentiment tracking
 Vaccine sentiment tracking is an ongoing project and serves as a classic used case for Crowdbreaks. The lab has previous worked on this topic and collected annotation data outside of Crowdbreaks (e.g. in [this](https://www.pnas.org/content/114/52/13762?collection=&utm_source=TrendMD&utm_medium=cpc&utm_campaign=Proc_Natl_Acad_Sci_U_S_A_TrendMD_0) project). The data was also used in a project to understand correlations between vaccine sentiment and vacine uptake in England. The study can be found [here](https://www.sciencedirect.com/science/article/pii/S0264410X20307374).
