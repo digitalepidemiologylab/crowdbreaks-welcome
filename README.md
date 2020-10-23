@@ -63,7 +63,7 @@ Vaccine sentiment tracking is an ongoing project and serves as a classic used ca
 This is a collaboration with PAHO (Pan American Health Organization), who is specifically interested in the influence of social media on vaccine uptake in Brazil.
 
 ### Assessing public opinion on CRISPR/Cas9
-Feel free to read more [here](https://www.jmir.org/2020/8/e17830).
+In this collaboration with ETH Zurich we used Twitter data related to the gene editing technology CRISPR/Cas9. Feel free to read more [here](https://www.jmir.org/2020/8/e17830).
 
 ### COVID-19 disease outbreak
 The COVID-19 outbreak led to a massive flood of data which led to multiple projects:
