@@ -49,7 +49,7 @@ Additionally, the library provides efficient helper functions (e.g. to load the 
 **Tech**: The tool is written in Python. For easier data cleaning we are using the Pandas library. Raw data is either in CSV format (annotation data) or in gzipped JSON-lines format (raw Twitter data). The parsed data (DataFrame) is in a binary format called parquet. 
 
 #### txtcls
-*Olesia pls add*
+[txtcls](https://github.com/crowdbreaks/text-classification) is a CLI tool that automates text classifiction model training, testing and deployment for speed and reproducibility.
 
 #### local-geocode
 [Local geocode](https://github.com/mar-muel/local-geocode) is a library to perform reverse geo-coding. It is specificially tuned to work on the user location field of tweets. The library parses a string such as "New York City" and returns the geo coordinates (longitude and latitude) if there is match. It is a library which is used in preprocess (and soon in the streamer as well) to enrich geo-information of tweets.
