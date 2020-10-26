@@ -24,13 +24,9 @@ Annotation data (also called "labelled data") is when raw data gets tagged with 
 **Tech**: The website is built with Ruby/Rails with a React.js front-end (visualizations are in d3.js). Annotation data is stored in a Postgres database. The website is hosted on Heroku.
 
 ### Data streaming
-For data collection, Crowdbreaks leverages streaming endpoints within Twitter Developer API. The infrastructure is set up using Amazon Web Services (AWS).
+Crowdbreaks leverages filter streaming endpoints within Twitter Developer API. This means data will be collected in real-time from Twitter for multiple projects at the same time. Machine Learning algorithms predict labels for the newly collected tweets (e.g. sentiment, relevance, etc.).
 
-There is a Python [streamer](https://github.com/crowdbreaks/crowdbreaks-streamer-2) app that runs on an AWS Fargate cluster and uses a [POST statuses/filter](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/filter-realtime/api-reference/post-statuses-filter) (API v1.1) request to connect to a filtered stream of relevant tweets. The relevant tweets are filtered based on keywords and languages that are provided for each project within Crowdbreaks.
-
-The whole data pipeline is set up using AWS. The streamer app itself runs on a Fargate cluster. After aquiring the tweets, it sends them over to their corresponding Kinesis Firehose Delivery Streams (one per project), which saves each project's tweets with a separate key-prefix ("folder") to a bucket in Simple Cloud Storage (S3). Each new batch of tweets being saved to S3 triggers an event that invokes a Lambda function, which preprocesses the tweets in the batch, makes predictions and sends the preprocessed data over to a project's Elasticsearch index.
-
-This way, Crowdbreaks is able to collect and keep Twitter data in a flexible and scalable fashion.
+**Tech**: The technologies used for the Crowdbreaks streamer are closely interlinked with the AWS (Amazon Web Services) ecosystem. The [streamer](https://github.com/crowdbreaks/crowdbreaks-streamer-2) is a Python application that runs on a AWS Fargate cluster and uses a [POST statuses/filter](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/filter-realtime/api-reference/post-statuses-filter) (API v1.1) request to connect to a filtered stream of tweets from Twitter. The platform is levarging tools such as Kinesis delivery streams, AWS Lambda, AWS Sagemaker, as well as Elasticsearch/Kibana. These tools allow the streamer to be highly scalable.
 
 ### Analysis tools
 Although Crowdbreaks is a real-time analysis tool (which is run in the Cloud, or more specifically on AWS), a great effort has been put in building tools to analyze Crowdbreaks data locally (e.g. on a cluster).
@@ -49,7 +45,9 @@ Additionally, the library provides efficient helper functions (e.g. to load the 
 **Tech**: The tool is written in Python. For easier data cleaning we are using the Pandas library. Raw data is either in CSV format (annotation data) or in gzipped JSON-lines format (raw Twitter data). The parsed data (DataFrame) is in a binary format called parquet. 
 
 #### txtcls
-[txtcls](https://github.com/crowdbreaks/text-classification) is a CLI tool that automates text classifiction model training, testing and deployment for speed and reproducibility.
+[txtcls](https://github.com/crowdbreaks/text-classification) is a CLI tool that automates text classifiction model training, testing and deployment for speed and reproducibility. Models are trained locally and can then directly be deployed to Crowdbreaks from the command line.
+
+**Tech**: The tool is built in Python and PyTorch.
 
 #### local-geocode
 [Local geocode](https://github.com/mar-muel/local-geocode) is a library to perform reverse geo-coding. It is specificially tuned to work on the user location field of tweets. The library parses a string such as "New York City" and returns the geo coordinates (longitude and latitude) if there is match. It is a library which is used in preprocess (and soon in the streamer as well) to enrich geo-information of tweets.
