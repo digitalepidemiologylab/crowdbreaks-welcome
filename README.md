@@ -1,4 +1,4 @@
-# Crowdbreaks
+<img src="logo-crowdbreaks.svg" alt="Crowdbreaks logo" width="400px"/>
 
 Hi! You're probably reading this either because you are working on the Crowdbreaks project or you are trying to understand more about what Crowdbreaks is.
 
